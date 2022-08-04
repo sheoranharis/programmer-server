@@ -106,7 +106,8 @@ app.use((err, req, res, next) => {
     res.render('./blog/error', {message, err, status});
 });
 
+const port = process.env.PORT || 3000;
 // server listening
-app.listen(5300, () => {
-    console.log("server listening on port 5500");
+app.listen(port, () => {
+    console.log(`erver listening on port ${port}`);
 });
