@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate')%>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 pt-4">
+                <div class="d-flex justify-content-between">
+                    <h4>Blog Server Posts</h4> <a href="/blogserver/create">Write a Blog post.</a>
+                </div>
+                <hr>
+                <% for(let blog of blogs){ %>
+                    <a href="/blogserver/<%=blog._id%>" class="text-decoration-none text-dark">
+                        <div class="card shadow p-3 mb-5 bg-body rounded">
+                            <div class="header">
+                                <p class="posted">posted by <%=blog.owner.name%>
+                                </p>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%=blog.name%>
+                                </h5>
+                                <p></p>
+
+                            </div>
+                        </div>
+
+                    </a>
+                    <% } %>
+
+            </div>
+            <div class="pt-4 col-sm-4 d-none d-sm-block">
+                <div class="card rounded-0">
+                    <div class="card-body">
+                        <p class="lead">Home</p>
+                        <% if(profile){%>
+                            <h3>
+                                <%=profile.name%> is logged in.
+                            </h3>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

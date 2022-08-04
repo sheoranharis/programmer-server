@@ -1,0 +1,97 @@
+<% layout('layouts/boilerplate')%>
+
+    <section class="mb-5">
+        <!-- Jumbotron -->
+        <div class="px-4 py-5 px-md-5 text-center text-lg-start mb-3" style="background-color: hsl(0, 0%, 96%)">
+            <div class="container">
+                <div class="row gx-lg-5 align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h1 class="my-5 display-3 fw-bold ls-tight">
+                            Programmer <br />
+                            <span class="text-primary">Server</span>
+                        </h1>
+                        <p style="color: hsl(217, 10%, 50.8%)">
+                            A place for programmers to hangout.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="card">
+                            <div class="card-body py-5 px-md-5">
+                                <div class="card-title">
+                                    <h3>Log In</h3>
+                                </div>
+                                <form action="/login" method="post" class="needs-validation p-5" novalidate>
+
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="mailing" name="mail" class="form-control"
+                                            placeholder="Mail Address" required />
+                                        <label class="form-label" for="mailing">Email address</label>
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="pass" class="form-control" name="password"
+                                            placeholder="Password" required />
+                                        <label class="form-label" for="pass">Password</label>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                        Log In
+                                    </button>
+                                    <p>Don't have an account? <a href="/register" class="link-info">Register here</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white ">
+
+        <div class="container p-4">
+
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1"
+                    href="https://github.com/sheoranharis/programmer-server" target="_blank" role="button"><i
+                        class="fab fa-github"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" target="_blank"
+                    href="https://twitter.com/sheoranharis" role="button"><i class="fa-brands fa-twitter"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="mailto:harishsheoran10@gmail.com"
+                    target="_blank"><i class="fa-solid fa-envelope"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" target="_blank"
+                    href="https://harishsheoran.pages.dev/" role="button"><i class="fa-solid fa-link"></i></a>
+
+
+                <a class="btn btn-outline-light btn-floating m-1"
+                    href="https://www.linkedin.com/m/in/harish-sheoran-986b1522b" target="_blank" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </section>
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Programmer Server is a Open Source project for programmers to hangout.
+                    Made by programmers for programmers.
+                </p>
+            </section>
+
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                Open Source :
+                <a class="text-white" href="https://github.com/sheoranharis/programmer-server"> Programmer
+                    Server</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/clientvalidation.js"></script>

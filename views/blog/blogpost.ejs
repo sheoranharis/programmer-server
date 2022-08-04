@@ -1,0 +1,122 @@
+<% layout('layouts/boilerplate')%>
+
+    <!-- Modal -->
+
+
+
+    <div class="container mt-5">
+        <div class="row m-4">
+            <div class="col-2">
+                <a href="/blogserver"><i class="fa-solid fa-arrow-left"></i>Back</a>
+
+            </div>
+            <div class="col-sm-8 p-4">
+                <div class="card shadow-sm">
+
+                    <div class="card-body">
+                        <div class="card-header d-flex justify-content-end commentAuthor posted">
+                            posted by <%=blogpost.owner.name%>
+                        </div>
+                        <div class="card-title d-flex justify-content-between">
+                            <h4>
+                                <%=blogpost.name%>
+                            </h4>
+
+                        </div>
+                        <p>
+                            <%=blogpost.write%>
+                        </p>
+
+                        <hr>
+                        <% if(currentUser && blogpost.owner._id==currentUser){ %>
+                            <div class="d-flex justify-content-between">
+                                <a href="/blogserver">Back</a>
+                                <a href="/blogserver/<%=blogpost._id%>/edit">Edit</a>
+                                <form action="/blogserver/<%=blogpost._id%>/delete/?_method=DELETE" method="post">
+                                    <button>Delete</button>
+                                </form>
+                            </div>
+                            <% } %>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row pt-2">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <p>Comment</p>
+
+                                        <form action="/comment/<%=blogpost._id%>" method="post" class="needs-validation"
+                                            novalidate>
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a comment here"
+                                                    id="discussion" style="height: 100px" rows="6" name="discuss"
+                                                    required></textarea>
+                                                <label for="discussion">Comments</label>
+                                                <div class="invalid-feedback">
+                                                    looking empty
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between pt-2">
+                                                <div></div>
+                                                <button type="submit">Comment</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="col">
+                            <% for(comm of blogpost.comment){%>
+                                <div class="card mt-3 border border-0 comment">
+                                    <div class="card-header commentAuthor">
+                                        <i class="fa-solid fa-square-terminal"></i>
+                                        <%=comm.author.name%>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>
+                                            <%=comm.discuss%>
+                                        </p>
+
+                                        <div class="d-flex justify-content-end">
+                                            <% if(currentUser && comm.author._id==currentUser){ %>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <a href="/comment/<%=blogpost._id%>/<%=comm._id%>/edit">Edit</a>
+                                                    </div>
+                                                    <div class="col">
+                                                        <form
+                                                            action="/comment/<%=blogpost._id%>/<%=comm._id%>/?_method=DELETE"
+                                                            method="post">
+                                                            <button>Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <% } %>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+
+                <!--Side space-->
+
+
+            </div>
+
+        </div>
+        <div class="col-2"></div>
+        <script src="../js/clientvalidation.js"></script>
