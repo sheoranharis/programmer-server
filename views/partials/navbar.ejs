@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
 
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -21,6 +21,46 @@
                         Contribute
                     </a>
                 </li>
+                /*<% if(!currentUser){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Sign up</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <% } %>*/
+
+                        <li class="nav-item">
+                            <form action="/logout" method="post">
+                                <button class="nav-link btn btn-dark">Logout</button>
+                            </form>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</nav>-->
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+        <a href="/blogserver" class="navbar-brand">Programmer Server</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/sheoranharis/programmer-server" target="_blank">
+                        Contribute
+                    </a>
+                </li>
                 <% if(!currentUser){ %>
                     <li class="nav-item">
                         <a class="nav-link" href="/register">Sign up</a>
@@ -35,12 +75,6 @@
                             <form action="/logout" method="post">
                                 <button class="nav-link btn btn-dark">Logout</button>
                             </form>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-
-                            </a>
                         </li>
             </ul>
         </div>

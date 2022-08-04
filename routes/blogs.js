@@ -33,7 +33,7 @@ router.get('/', async(req, res,next) => {
         const blogs = await Blog.find({}).populate('owner');
         const profile = await User.findById(req.session.userID);
         if(!profile){
-            throw new ServerError("No Blog Posts", 404);
+            return res.redirect('/login');
         }
         if(!blogs){
             throw new ServerError("No Blog Posts", 404);
