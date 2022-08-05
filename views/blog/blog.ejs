@@ -10,8 +10,13 @@
                     <a href="/blogserver/<%=blog._id%>" class="text-decoration-none text-dark">
                         <div class="card shadow p-3 mb-5 bg-body rounded">
                             <div class="header">
-                                <p class="posted">posted by <%=blog.owner.name%>
-                                </p>
+                                <% if(blog.owner){%>
+                                    <p class="posted">posted by <%=blog.owner.name%>
+                                    </p>
+                                    <% }else{%>
+                                        <p class="posted">deleted user</p>
+                                        <% } %>
+
                             </div>
 
                             <div class="card-body">

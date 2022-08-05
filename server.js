@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
 
@@ -35,7 +35,7 @@ db.once("open", () => {
 })
 
 // middlewares
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('tiny'));
@@ -51,32 +51,32 @@ const secret = process.env.SECRET || 'blahblahblah'
 app.use(session({
     //session storage, this is diff collection from other collecction
     store: MongoDBStore.create({
-        mongoUrl:dbUrl,
+        mongoUrl: dbUrl,
         secret,
         //updating the session after a period of time,
         //prevent unneccessary resave
-        touchAfter:24*60*60
-    }).on("error", function(e){
+        touchAfter: 24 * 60 * 60
+    }).on("error", function (e) {
         console.log("Session store Error.", e)
     }),
 
-    name:'session',
+    name: 'session',
     secret,
     resave: false,
     saveUninitialized: true,
-    cookie: { 
-        httpOnly:true, // cant access cookies on client side
-       // secure: true,
-        expires:Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge:1000 * 60 * 60 * 24 * 7,
-        
+    cookie: {
+        httpOnly: true, // cant access cookies on client side
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+
     }
 }));
 
 // flash messages
 app.use(flash());
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
     // add to every response object so these req.flash has access to every response object
     res.locals.currentUser = req.session.userID;
     res.locals.success = req.flash('success');
@@ -85,13 +85,14 @@ app.use((req,res,next) => {
 })
 
 // routes
+
 app.use('/blogserver', blogRouter);
 app.use('/comment/:blogid', discussRouter);
 app.use('/', userRouter);
 
 // 404 route
-app.all('*', (req,res,next) => {
-    next( new ServerError("Not Found", 404));
+app.all('*', (req, res, next) => {
+    next(new ServerError("Not Found", 404));
 });
 
 // Error Handler
@@ -101,7 +102,7 @@ app.use((err, req, res, next) => {
     const { status, message } = err;
     console.log(status, " - STATUS IS")
     console.log(message, " - MESSAGE IS")
-    res.render('./blog/error', {message, err, status});
+    res.render('./blog/error', { message, err, status });
 });
 
 const port = process.env.PORT || 3000;
