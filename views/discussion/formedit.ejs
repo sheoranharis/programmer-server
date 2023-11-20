@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="container mt-5">
+        <form action="/comment/<%=blogid%>/<%=Comment._id%>/update?_method=PUT" method="post" class="needs-validation"
+            novalidate>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="discussion"
+                    style="height: 120px; " rows="6" name="discuss" required>
+                <%=Comment.discuss%>
+                </textarea>
+
+                <label for="discussion">Comments</label>
+                <div class="invalid-feedback">
+                    looking empty
+                </div>
+            </div>
+            <div class="d-flex justify-content-between pt-2">
+                <div></div>
+                <button type="submit">Post</button>
+            </div>
+        </form>
+    </div>

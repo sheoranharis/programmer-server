@@ -1,0 +1,16 @@
+body {
+    background-color: #f2f3f4;
+    color: #0080c0;
+}
+
+.posted {
+    font-size: 13px;
+}
+
+.comment {
+    background-color: #f2f3f4;
+}
+
+.commentAuthor {
+    color: black;
+}

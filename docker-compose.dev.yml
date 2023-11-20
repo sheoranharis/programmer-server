@@ -1,0 +1,21 @@
+version: "3"
+services:
+  programmer-server:
+    build:
+      context: .
+      args:
+        - NODE_ENV=dev
+    command: ["npm", "run", "dev"]
+    environment:
+      - NODE_ENV=dev
+      - MONGO_USER=harisheoran
+      - MONGO_PASSWORD=harisheoran
+      - SESSION_SECRET=secret
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
+
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=harisheoran
+      - MONGO_INITDB_ROOT_PASSWORD=harisheoran
