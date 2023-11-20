@@ -1,7 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
-
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -17,13 +13,13 @@ const flash = require('connect-flash');
 const User = require('./models/users')
 const userRouter = require('./routes/user');
 const { renderFile } = require('ejs');
-const dbUrl = process.env.DB_URL;
+//const dbUrl = process.env.DB_URL;
 //const localDB = "mongodb://127.0.0.1/server"
 const MongoDBStore = require('connect-mongo');
-
+const {MONGO_USER, MONGO_IP, MONGO_PASSWORD} = require("./config/config")
 // connecting the mongo db
 // const mongoDB = '';
-mongoose.connect(dbUrl, {
+/*mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
@@ -33,6 +29,18 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once("open", () => {
     console.log("Database Connected");
 })
+*/
+
+const mongo_url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:27017/?authSource=admin`
+
+mongoose.connect(mongo_url)
+    .then(() => console.log("Connected to DB"))
+    .catch((e) => {
+        console.log(`Not Connected to DB ${e}`)
+        //setTimeout(connectAndRetry, 5000)
+    });
+
+
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -51,7 +59,7 @@ const secret = process.env.SECRET || 'blahblahblah'
 app.use(session({
     //session storage, this is diff collection from other collecction
     store: MongoDBStore.create({
-        mongoUrl: dbUrl,
+        mongoUrl: mongo_url,
         secret,
         //updating the session after a period of time,
         //prevent unneccessary resave
@@ -85,7 +93,6 @@ app.use((req, res, next) => {
 })
 
 // routes
-
 app.use('/blogserver', blogRouter);
 app.use('/comment/:blogid', discussRouter);
 app.use('/', userRouter);
@@ -108,5 +115,5 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 // server listening
 app.listen(port, () => {
-    console.log(`erver listening on port ${port}`);
+    console.log(`listening on port ${port}`);
 });
