@@ -9,11 +9,11 @@ services:
       context: .
       args:
         - NODE_ENV=prod
-      environment:
-        - NODE_ENV=prod
-        - MONGO_USER=${MONGO_USER}
-        - MONGO_PASSWORD=${MONGO_PASSWORD}
-        - SESSION_SECRET=${SESSION_SECRET}
+    environment:
+      - NODE_ENV=prod
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - SESSION_SECRET=${SESSION_SECRET}
 
   mongo:
     environment:
