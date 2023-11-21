@@ -40,7 +40,7 @@ mongoose.connect(mongo_url)
         //setTimeout(connectAndRetry, 5000)
     });
 
-
+app.enable("trust proxy")
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
