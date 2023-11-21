@@ -16,7 +16,7 @@ const { renderFile } = require('ejs');
 //const dbUrl = process.env.DB_URL;
 //const localDB = "mongodb://127.0.0.1/server"
 const MongoDBStore = require('connect-mongo');
-const {MONGO_USER, MONGO_IP, MONGO_PASSWORD} = require("./config/config")
+const {MONGO_USER, MONGO_IP, MONGO_PASSWORD, SESSION_SECRET} = require("./config/config")
 // connecting the mongo db
 // const mongoDB = '';
 /*mongoose.connect(dbUrl, {
@@ -54,7 +54,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-const secret = process.env.SECRET || 'blahblahblah'
+const secret = SESSION_SECRET
 // session // default store of sessions is memory store
 app.use(session({
     //session storage, this is diff collection from other collecction
