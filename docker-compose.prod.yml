@@ -9,7 +9,7 @@ services:
       context: .
       args:
         - NODE_ENV=prod
-      environments:
+      environment:
         - NODE_ENV=prod
         - MONGO_USER=${MONGO_USER}
         - MONGO_PASSWORD=${MONGO_PASSWORD}
