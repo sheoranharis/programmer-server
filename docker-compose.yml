@@ -9,8 +9,6 @@ services:
     build: .
     depends_on:
       - mongo
-    env_file:
-      - ./.env
 
   mongo:
     image: mongo
