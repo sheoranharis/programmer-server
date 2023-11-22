@@ -7,6 +7,7 @@ services:
 
   programmer-server:
     build: .
+    image: harisheoran/programmer-server
     depends_on:
       - mongo
 
