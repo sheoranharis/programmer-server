@@ -20,7 +20,9 @@ pipeline{
             }
         }
         stage('push'){
-            sh 'docker-compose -f docker-compose.yml -f docker-compose.prod.yml push'
+            steps{
+                sh 'docker-compose -f docker-compose.yml -f docker-compose.prod.yml push'
+            }
         }
     }
     post {
