@@ -28,7 +28,18 @@ pipeline{
     post {
         always {
             sh 'docker logout'
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            emailext {
+                subject: "Pipeline Status: ${currentBuild.result}",
+                body: '''<html>
+                            <body>
+                                <p>Build Status: ${currentBuild.result} and Build Number: ${currentBuild.number}</p>
+                            </body>
+                         </html>''',
+                to: 'harishdev1010@gmail.com',
+                from: 'Programmer Server Pipeline',
+                replyTo: 'Programmer Server Pipeline',
+                mimeType: 'text/html'
+            }
         }
     }
 }
