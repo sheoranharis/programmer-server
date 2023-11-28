@@ -1,2 +1,7 @@
 node_modules
 .env
+# Ignore Terraform state files
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform
+terraform/terraform*
