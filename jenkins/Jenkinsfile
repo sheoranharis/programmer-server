@@ -29,15 +29,15 @@ pipeline{
     always {
         sh 'docker logout'
         emailext {
-            subject: "Pipeline Status: ${currentBuild.result}",
+            subject: "Pipeline Status: ${currentBuild.result}"
             body: '''<html>
                         <body>
                             <p>Build Status: ${currentBuild.result} and Build Number: ${currentBuild.number}</p>
                         </body>
-                     </html>''',
-            to: 'harishdev1010@gmail.com',
-            from: 'Programmer Server Pipeline',
-            replyTo: 'Programmer Server Pipeline',
+                     </html>'''
+            to: 'harishdev1010@gmail.com'
+            from: 'Programmer Server Pipeline'
+            replyTo: 'Programmer Server Pipeline'
             mimeType: 'text/html'
         }
     }
