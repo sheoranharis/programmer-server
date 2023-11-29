@@ -2,4 +2,3 @@
 - import_tasks: system.yml
 - import_tasks: docker.yml
 - import_tasks: clone_repo.yml
-- import_tasks: start_container.yml
