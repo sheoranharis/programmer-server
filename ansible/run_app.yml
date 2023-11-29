@@ -1,0 +1,6 @@
+---
+- name: Run the application
+  hosts: all
+  become: true
+  roles:
+    - main_server

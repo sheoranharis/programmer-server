@@ -4,3 +4,6 @@ node_modules
 .env
 Dockerfile
 docker-compose*
+jenkins
+terraform
+ansible

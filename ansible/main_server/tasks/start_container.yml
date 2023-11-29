@@ -1,0 +1,3 @@
+---
+- name: Spin up the container
+  ansible.builtin.shell: sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d

@@ -1,0 +1,6 @@
+---
+- name: Update and cache system
+  become: true
+  apt:
+    upgrade: true
+    update_cache: true
