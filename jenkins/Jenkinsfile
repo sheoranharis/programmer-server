@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+        docker{
+            image 'docker:24.0.0'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     environment{
                 DOCKERHUB_CREDENTIALS = credentials('docker')
     }
@@ -29,10 +34,10 @@ pipeline{
     always {
         script {
             sh 'docker logout'
-            emailext subject: "Pipeline Status: ${currentBuild.result}",
+            emailext subject: "Pipeline Status: ${BUILD_NUMBER}",
                       body: '''<html>
                                 <body>
-                                    <p>Build Status: ${currentBuild.result} and Build Number: ${currentBuild.number}</p>
+                                    <p>Build Status: ${BUILD_STATUS} and Build URL: ${BUILD_URL}</p>
                                 </body>
                              </html>''',
                       to: 'harishdev1010@gmail.com',
