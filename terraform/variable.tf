@@ -4,10 +4,16 @@ variable "my-region" {
     default = "ap-south-1"
 }
 
-variable "my-instance" {
+variable "pipeline-instance" {
     description = "EC2 Instance name"
     type = string
     default = "Pipeline Server"
+}
+
+variable "main-instance" {
+    description = "EC2 Instance name"
+    type = string
+    default = "Main Server"
 }
 
 variable "key-pair" {

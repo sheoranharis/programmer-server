@@ -1,6 +1,6 @@
 ---
 - name: Install Jenkins
-  hosts: all
+  hosts: pipeline
   become: true
   roles:
     - pipeline
