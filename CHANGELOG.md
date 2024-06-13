@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/harisheoran/programmer-server/compare/v1.1.0...v1.1.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* blog edit fix ([e4beda6](https://github.com/harisheoran/programmer-server/commit/e4beda6e787122a222e722ccd48a079f6904fada))
+
 # [1.1.0](https://github.com/harisheoran/programmer-server/compare/v1.0.0...v1.1.0) (2024-06-13)
 
 
