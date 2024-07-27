@@ -13,32 +13,18 @@ const flash = require('connect-flash');
 const User = require('./models/users')
 const userRouter = require('./routes/user');
 const { renderFile } = require('ejs');
-//const dbUrl = process.env.DB_URL;
-//const localDB = "mongodb://127.0.0.1/server"
 const MongoDBStore = require('connect-mongo');
-const {MONGO_USER, MONGO_IP, MONGO_PASSWORD, SESSION_SECRET} = require("./config/config")
-// connecting the mongo db
-// const mongoDB = '';
-/*mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+const {MONGO_USER, MONGO_IP, MONGO_PASSWORD, MONGO_APP, SESSION_SECRET} = require("./config/config")
 
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once("open", () => {
-    console.log("Database Connected");
-})
-*/
+// prod DB
+const mongo_url = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}/?retryWrites=true&w=majority&appName=${MONGO_APP}`
 
-const mongo_url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:27017/?authSource=admin`
-
-mongoose.connect(mongo_url)
-    .then(() => console.log("Connected to DB"))
+mongoose.connect(mongo_url, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to DB'))
     .catch((e) => {
-        console.log(`Not Connected to DB ${e}`)
+        console.log(`Not Connected to DB ${e}`);
         //setTimeout(connectAndRetry, 5000)
-    });
+    }); 
 
 app.enable("trust proxy")
 
@@ -67,7 +53,6 @@ app.use(session({
     }).on("error", function (e) {
         console.log("Session store Error.", e)
     }),
-
     name: 'session',
     secret,
     resave: false,
@@ -77,7 +62,6 @@ app.use(session({
         // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7,
-
     }
 }));
 
