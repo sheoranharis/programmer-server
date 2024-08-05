@@ -1,20 +1,22 @@
-
-## Programmer Server
-
+# Programmer Server
 Micro Blog website for developers.
 
-## Workflow
-![](featured.png)
+## Deployment on AWS EKS
+- Create EKS Cluster
+> Wait for a eternity :)
+- 
 
-## Tech Stack and tools
 
-### Application
+
+## Deployment on AWS EC2
+
+### Application Tech Stack
 - Node JS
 - Express JS
 - Mongo DB
 - Bootstrap 5
 
-### DevOps
+### DevOps Tools used
 - Docker
 - Docker Compose
 - VCS (Git & Github)
@@ -23,9 +25,6 @@ Micro Blog website for developers.
 - Nginx
 - AWS EC2
 - Jenkins
-
-# Next Goals
-- Contianer Orchestration using k8s
 
 # Development Setup
 
