@@ -45,3 +45,22 @@ spec:
       port: 80
       targetPort: 3000
       nodePort: 30001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-ingress-class
+  rules:
+  - http:
+      paths:
+      - path: /myserver
+        pathType: Prefix
+        backend:
+          service:
+            name: programmer-server-service
+            port:
+              number: 80
